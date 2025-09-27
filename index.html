@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リリック・アニメーター</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .loader {
+      border-top-color: #6366f1;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    .history-item {
+      transition: all 0.2s ease-in-out;
+    }
+    .history-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    /* Drag and Drop styles */
+    .slot.drag-over {
+      outline: 2px dashed #6366f1;
+      background-color: rgba(99, 102, 241, 0.2);
+    }
+    .dragging {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+    .group:hover input[type="checkbox"] {
+        opacity: 1;
+    }
+    .group-bar {
+      pointer-events: all;
+      transition: all 0.2s ease;
+    }
+    .group-bar.highlighted {
+      opacity: 0.8 !important;
+      transform: translateY(-50%) scaleY(1.5);
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.6; box-shadow: 0 0 4px 1px currentColor; }
+      50% { opacity: 0.9; box-shadow: 0 0 8px 2px currentColor; }
+    }
+    .group-bar.selected-group {
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/"
+  }
+}
+</script>
+</head>
+<body class="bg-gray-900 text-white">
+  <div id="root"></div>
+  <script type="module" src="index.tsx"></script>
+</body>
+</html>

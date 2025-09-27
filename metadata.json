@@ -1,0 +1,5 @@
+{
+  "name": "Lyric Animator",
+  "description": "An application that generates anime-style videos from lyrics.",
+  "requestFramePermissions": []
+}
